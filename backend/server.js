@@ -6,11 +6,7 @@ import router from './routes/route.js'; // Importamos el enrutador de usuarios
 
 const app = express();
 dotenv.config();
-app.use(cors({
-    origin: 'http://localhost:4200', // Reemplaza esto con la URL de tu aplicación Angular
-    credentials: true // Si estás utilizando cookies u otras credenciales de autenticación, asegúrate de permitirlas aquí
-  }));
-  
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Cambiamos urlencoded por express.urlencoded
 app.use('/api/users', router); // Rutas para usuarios

@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-// Creamos un schema para el modelo de usuario
 const userSchema = new mongoose.Schema(
   {
     fullName: {
@@ -14,21 +13,23 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, "Please enter your email"],
-      unique: true // Asegura que el correo electrónico sea único
+      unique: true
     },
     password: {
       type: String,
       required: [true, "Please enter your password"]
     },
-    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }], // Relación con los posts del usuario
+    token: {
+      type: String
+    },
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
   },
   {
-    timestamps: true, // Agrega campos de creación y actualización a los documentos
-    versionKey: false // No mostramos la clave de
+    timestamps: true,
+    versionKey: false
   }
 );
 
-// Creamos el modelo a partir del schema
 const UserModel = mongoose.model('User', userSchema);
 
 export default UserModel;
